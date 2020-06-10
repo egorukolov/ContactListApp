@@ -14,25 +14,34 @@ struct Person {
     let surname: String
     let email: String
     let phone: String
-
+   
 }
 
 extension Person {
 
-    static func createContact() -> Person {
+    static func createContact() -> [Person] {
+        
+        var contacts: [Person] = []
         
         let data = DataManager()
+        
+        for _ in 1...data.names.count {
         
         let newSuperContact = Person(name: data.names.randomElement() ?? "",
                                      surname: data.surnames.randomElement() ?? "",
                                      email: data.emails.randomElement() ?? "",
                                      phone: data.phones.randomElement() ?? "")
+            
+            
         
-        return newSuperContact
+        contacts.append(newSuperContact)
+            
+        }
+        
+        return contacts
     }
     
-    
-    
+   
+
+
 }
-
-

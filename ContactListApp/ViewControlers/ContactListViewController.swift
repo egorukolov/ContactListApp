@@ -10,7 +10,7 @@ import UIKit
 
 class ContactListViewController: UITableViewController {
 
-    var person: DataManager!
+    var contacts = Person.createContact()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +21,21 @@ class ContactListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         
-        return person.names.count
-        
+        contacts.count
+         
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = contacts[indexPath.row].name + " " + contacts[indexPath.row].surname
+        
 
         return cell
     }
-    */
+    
 
    
 
