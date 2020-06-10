@@ -8,17 +8,31 @@
 
 import Foundation
 
-class DataManager {
+struct Person {
     
-    let names = ["John", "Aaron", "Tim", "Ted", "Steven"]
-    let surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
-    let emails = [
-        "user@mail.ru",
-        "ivanov2003@gmail.com",
-        "megadestroyer2000@yandex.ru",
-        "qwerty@yahoo.com",
-        "anonymous@rambler.ru"
-    ]
-    
-    let phones = ["3853742", "9582741", "8573904", "7501739", "7089582"]
+    let name: String
+    let surname: String
+    let email: String
+    let phone: String
+
 }
+
+extension Person {
+
+    static func createContact() -> Person {
+        
+        let data = DataManager()
+        
+        let newSuperContact = Person(name: data.names.randomElement() ?? "",
+                                     surname: data.surnames.randomElement() ?? "",
+                                     email: data.emails.randomElement() ?? "",
+                                     phone: data.phones.randomElement() ?? "")
+        
+        return newSuperContact
+    }
+    
+    
+    
+}
+
+
