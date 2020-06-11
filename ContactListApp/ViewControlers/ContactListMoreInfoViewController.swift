@@ -19,5 +19,7 @@ class ContactListMoreInfoViewController: UIViewController {
         super.viewDidLoad()
         
         title = person.fullName
+        emailLabel.text = "Email: \(person.email)"
+        phoneNumberLabel.text = "Phone: \(person.phoneNumber)"
     }
 }

@@ -20,7 +20,6 @@ struct Person {
         "\(name) \(surname)"
     }
    
-    
     static func getContactList() -> [Person] {
         
         var persons: [Person] = []
@@ -28,7 +27,7 @@ struct Person {
         let names = DataManager.shared.names.shuffled()
         let surnames = DataManager.shared.surnames.shuffled()
         let emails = DataManager.shared.emails.shuffled()
-        let phoneNumbers = DataManager.shared.phoneNumber.shuffled()
+        let phoneNumbers = DataManager.shared.phoneNumbers.shuffled()
         
         for index in 0..<names.count {
             let person = Person(name: names[index],
@@ -40,12 +39,10 @@ struct Person {
         }
         
         return persons
-        
     }
     
     enum Contacts: String {
         case phone = "phone"
         case email = "tray"
     }
-    
 }

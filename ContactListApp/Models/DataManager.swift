@@ -25,5 +25,5 @@ class DataManager {
         "anonymous@rambler.ru"
     ]
     
-    let phoneNumber = ["3853742", "9582741", "8573904", "7501739", "7089582"]
+    let phoneNumbers = ["3853742", "9582741", "8573904", "7501739", "7089582"]
 }
