@@ -21,24 +21,38 @@ class ContactListDetailsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        persons.count
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        persons[section].fullName
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        2
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // Configure the cell...
+        let person = persons[indexPath.section]
+        
+        switch indexPath.row {
+        case 0 :
+            cell.textLabel?.text = person.phoneNumber
+            cell.imageView?.image = UIImage(systemName:
+                Contacts.phone.rawValue)
+        default:
+            cell.textLabel?.text = person.email
+            cell.imageView?.image = UIImage(systemName:
+                Contacts.email.rawValue)
+        }
 
         return cell
     }
-    */
+  
 
     
     /*
