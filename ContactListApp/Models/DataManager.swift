@@ -10,6 +10,10 @@ import Foundation
 
 class DataManager {
     
+    static let shared = DataManager()
+    
+    private init() {}
+    
     let names = ["John", "Aaron", "Tim", "Ted", "Steven"]
     let surnames = ["Smith", "Dow", "Isaacson", "Pennyworth", "Jankins"]
     
@@ -21,5 +25,5 @@ class DataManager {
         "anonymous@rambler.ru"
     ]
     
-    let phones = ["3853742", "9582741", "8573904", "7501739", "7089582"]
+    let phoneNumber = ["3853742", "9582741", "8573904", "7501739", "7089582"]
 }

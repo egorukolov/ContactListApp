@@ -10,7 +10,7 @@ import UIKit
 
 class ContactListViewController: UITableViewController {
 
-    var contacts = Person.createContact()
+    var persons: [Person] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,11 +18,10 @@ class ContactListViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView,
-                            numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        contacts.count
-         
+       persons.count
+       
     }
 
     
@@ -30,8 +29,8 @@ class ContactListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath)
 
-        cell.textLabel?.text = contacts[indexPath.row].name + " " + contacts[indexPath.row].surname
-        
+        let person = persons[indexPath.row]
+        cell.textLabel?.text = person.fullName
 
         return cell
     }
@@ -39,14 +38,18 @@ class ContactListViewController: UITableViewController {
 
    
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     //   guard segue.identifier == "MoreInfo" else { return }
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let moreInfoVC = segue.destination as! ContactListMoreInfoViewController
+            moreInfoVC.person = persons[indexPath.row]
+        }
     }
-    */
+   
 
 }

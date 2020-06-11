@@ -13,35 +13,39 @@ struct Person {
     let name: String
     let surname: String
     let email: String
-    let phone: String
+    let phoneNumber: String
+    
+    var fullName: String {
+        
+        "\(name) \(surname)"
+    }
    
-}
-
-extension Person {
-
-    static func createContact() -> [Person] {
+    
+    static func getContactList() -> [Person] {
         
-        var contacts: [Person] = []
+        var persons: [Person] = []
         
-        let data = DataManager()
+        let names = DataManager.shared.names.shuffled()
+        let surnames = DataManager.shared.surnames.shuffled()
+        let emails = DataManager.shared.emails.shuffled()
+        let phoneNumbers = DataManager.shared.phoneNumber.shuffled()
         
-        for _ in 1...data.names.count {
-        
-        let newSuperContact = Person(name: data.names.randomElement() ?? "",
-                                     surname: data.surnames.randomElement() ?? "",
-                                     email: data.emails.randomElement() ?? "",
-                                     phone: data.phones.randomElement() ?? "")
+        for index in 0..<names.count {
+            let person = Person(name: names[index],
+                                surname: surnames[index],
+                                email: emails[index],
+                                phoneNumber: phoneNumbers[index])
             
-            
-        
-        contacts.append(newSuperContact)
-            
+            persons.append(person)
         }
         
-        return contacts
+        return persons
+        
     }
     
-   
-
-
+    enum Contacts: String {
+        case phone = "phone"
+        case email = "tray"
+    }
+    
 }
